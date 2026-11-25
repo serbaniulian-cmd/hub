@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0d0f12">
 <title>Hub</title>
+<script>try{if(localStorage.getItem("hubNav")==="0")document.documentElement.classList.add("nav-off")}catch(e){}</script>
 <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>try{if(localStorage.getItem("hubFid"))document.documentElement.classList.add("locked")}catch(e){}</script>
 <style>
@@ -14,13 +15,13 @@
 body{margin:0;min-height:100vh;font-family:-apple-system,"SF Pro Display",system-ui,sans-serif;color:var(--ink);background:rgb(var(--bx));padding:calc(env(safe-area-inset-top) + 74px) 16px calc(100px + env(safe-area-inset-bottom))}
 main{max-width:620px;margin:0 auto}button{font-family:inherit;color:inherit}
 #bar{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;gap:10px;align-items:center;padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;background:rgba(var(--bx),.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.lg{flex:none;width:38px;height:38px;border-radius:12px;background:var(--lime);display:grid;place-items:center;color:var(--on)}
+.lg{border:0;padding:0;cursor:pointer;flex:none;width:38px;height:38px;border-radius:12px;background:var(--lime);display:grid;place-items:center;color:var(--on)}
 #tabs{display:flex;gap:6px;flex:1;overflow-x:auto;scrollbar-width:none}#tabs::-webkit-scrollbar{display:none}
 #tabs a{flex:none;display:flex;align-items:center;gap:7px;padding:10px 14px;border-radius:14px;color:var(--mu);text-decoration:none;font-size:14px;font-weight:600}
 #tabs a.on{background:rgba(255,255,255,.12);color:#fff}#tabs a.on::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime)}
 .bd{background:var(--lime);color:var(--on);font-size:11px;font-weight:700;border-radius:99px;padding:1px 7px}
 #ext{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none}
-.fr{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 58px);width:100%;height:calc(100vh - env(safe-area-inset-top) - 58px - env(safe-area-inset-bottom));height:calc(100dvh - env(safe-area-inset-top) - 58px - env(safe-area-inset-bottom));border:0;display:none;background:rgb(var(--bx))}.fr.on{display:block}
+.fr{opacity:0;transition:opacity .25s;position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 58px);width:100%;height:calc(100vh - env(safe-area-inset-top) - 58px - env(safe-area-inset-bottom));height:calc(100dvh - env(safe-area-inset-top) - 58px - env(safe-area-inset-bottom));border:0;display:none;background:rgb(var(--bx))}.fr.on{display:block}.fr.rdy{opacity:1}
 main.off,body.app .fab{display:none}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-.8px}h1 span{text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:3px;text-underline-offset:7px}
@@ -94,11 +95,18 @@ body.priv #c-obs .ob b,body.priv #cald{filter:blur(9px)}
 .wrap small{display:block;margin-top:16px;font-weight:800;letter-spacing:1px;font-size:12px}.wrap .wb{display:block;margin-top:12px;font-size:56px;font-weight:800;letter-spacing:-2.5px;line-height:1}.wrap p{margin:8px 0 0;color:#10150a;font-size:16px;font-weight:600}.wrap em{display:block;margin-top:4px;font-style:normal;font-size:14px;opacity:.75}
 .wrap .wn{display:flex;justify-content:space-between;margin-top:18px}.wrap .wn button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(16,21,10,.15);color:#10150a;font-size:20px;padding:0}
 body.priv .wb{filter:blur(10px)}
+html.nav-off #tabs,html.nav-off #ext{display:none}
+#intro{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 58px);height:calc(100vh - env(safe-area-inset-top) - 58px);height:calc(100dvh - env(safe-area-inset-top) - 58px);z-index:4;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;background:radial-gradient(70% 40% at 50% 38%,color-mix(in srgb,var(--lime) 16%,transparent),transparent 70%),rgb(var(--bx))}
+#intro.on{display:flex;animation:fin .3s}#intro.out{animation:fout .35s forwards}@keyframes fin{from{opacity:0}}@keyframes fout{to{opacity:0}}
+#intro small{font-weight:800;letter-spacing:1.5px;font-size:12px;color:var(--lime)}#intro .xf{transform-origin:center}#intro .xc{width:54px;height:88px;font-size:62px}#intro .xs{font-size:50px}#intro p{margin:0;color:var(--mu);font-size:15px;min-height:1.4em}#intro .hint{font-size:12px;color:var(--mu);opacity:.7}
+body.priv #fvn,body.priv #intro .xf{filter:blur(12px)}
+@media(prefers-reduced-motion:reduce){#intro.on{animation:none}}
+@media(min-width:900px){html.nav-off #bar{width:70px;padding-left:14px;padding-right:14px}html.nav-off body{padding-left:100px}html.nav-off .fr,html.nav-off #intro{left:70px;width:calc(100% - 70px)}#intro{left:240px;top:0;height:100vh;height:100dvh;width:calc(100% - 240px)}}
 @media(min-width:900px){body{padding:30px 30px 60px 270px}#bar{right:auto;bottom:0;width:240px;flex-direction:column;align-items:stretch;padding:24px 14px;border-right:1px solid var(--line);border-bottom:0}.lg{margin-bottom:8px}#tabs{flex-direction:column;overflow:visible;flex:none}#tabs a{padding:12px 14px}#ext{width:auto;margin-top:auto;padding:0 14px;height:42px}.fr{left:240px;top:0;width:calc(100% - 240px);height:100vh;height:100dvh}main{max-width:760px}.fab{right:30px}}
 </style>
 </head>
 <body>
-<header id="bar"><div class="lg" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></div><nav id="tabs" aria-label="Aplicații"></nav><a id="ext" href="#" target="_blank" rel="noopener" aria-label="Deschide aplicația separat" hidden>↗</a></header>
+<header id="bar"><button class="lg" id="lgt" type="button" aria-label="Ascunde meniul" aria-expanded="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></button><nav id="tabs" aria-label="Aplicații"></nav><a id="ext" href="#" target="_blank" rel="noopener" aria-label="Deschide aplicația separat" hidden>↗</a></header>
 <main>
 <div class="top"><div><h1 id="hi">Bună <span>seara</span></h1><p class="sub" id="sub"></p></div><div style="display:flex;gap:8px"><button class="ib" id="eye" type="button" aria-label="Mod discret" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.600 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="ib" id="pal" type="button" aria-label="Aspect și carduri"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button></div></div>
 <div class="srch"><input id="q" type="search" placeholder="Caută o persoană, factură, acțiune…" aria-label="Caută" autocomplete="off"><div id="res" class="card" hidden></div></div>
@@ -106,7 +114,7 @@ body.priv .wb{filter:blur(10px)}
 <section id="c-next" class="card nx"></section>
 <section id="c-obs" class="card"></section>
 <section id="c-kpi" class="grid"></section>
-<section id="c-flip" class="card"><h2>Afișaj</h2><p>Valoarea portofoliului și cursul euro</p><div class="xr"><div class="xf" id="fv"></div><span class="xl">RON · Bursa</span></div><div class="xr"><span class="xn" id="fx2">–</span><span class="xl">EUR / RON</span></div></section>
+<section id="c-flip" class="card"><h2>Afișaj</h2><p>Valoarea portofoliului și cursul euro</p><div class="xr"><span class="xn" id="fvn">0</span><span class="xl">RON · Bursa</span></div><div class="xr"><span class="xn" id="fx2">–</span><span class="xl">EUR / RON</span></div></section>
 <section id="c-cal" class="card"><div class="hd"><div><h2 id="calt">Calendar</h2><p>Scadențe, încărcări, zile de naștere, tranzacții</p></div><div style="display:flex;gap:6px"><button class="cn" id="calp" type="button" aria-label="Luna precedentă">‹</button><button class="cn" id="caln" type="button" aria-label="Luna următoare">›</button></div></div><div class="cgrid" id="calg"></div><div class="clg"><span><b style="background:#7dd3fc"></b>Facturi</span><span><b style="background:#f9a8d4"></b>Mini-CRM</span><span><b style="background:#2dd4bf"></b>Mașină</span><span><b style="background:#a78bfa"></b>Bursa</span></div><div id="cald" aria-live="polite"></div></section>
 <section id="c-chart" class="card"><div class="hd"><div><h2>Cheltuieli lunare</h2><p>Ultimele 12 luni față de buget · atinge o coloană</p></div><div class="lgd"><span><i></i>Cheltuit</span><span><i class="d"></i>Buget</span></div></div><div class="bars" id="bars"></div><div id="det" aria-live="polite"></div></section>
 <section id="c-pos" class="card"><h2>Poziții la bursă</h2><p>Ponderea fiecăreia în portofoliu</p><div id="pz"></div></section>
@@ -120,6 +128,7 @@ body.priv .wb{filter:blur(10px)}
 <dialog id="add"><h2>Adaugă</h2><div class="qa"><input id="qa" type="text" placeholder="ex. am încărcat 30 kWh la Eldrive, 74 lei" aria-label="Scrie sau spune ce vrei să adaugi" autocomplete="off" enterkeyhint="go"><button id="qgo" class="btn" type="button">Înțelege</button></div><div id="qr" role="status" aria-live="polite"></div><div class="sub" style="margin:14px 0 0">Sau deschide aplicația:</div><a class="opt" href="#masina">Încărcare nouă <em>Mașină</em></a><a class="opt" href="#facturi">Factură nouă <em>Facturi</em></a><a class="opt" href="#crm">Persoană nouă <em>Mini-CRM</em></a><a class="opt" href="#bursa">Tranzacție nouă <em>Bursa</em></a><p class="sub">Te duce în aplicația respectivă, la butonul ei de adăugare.</p></dialog>
 <dialog id="set"><h2>Aspect</h2><div class="sub" style="margin:0 0 8px">Temă</div><div class="th" id="th"></div><div class="sub" style="margin:0 0 8px">Culoare accent</div><div class="sw" id="sw"></div><div class="sub" style="margin:0">Transparență carduri <b id="cav"></b></div><input type="range" id="ca" min="0" max="100" aria-label="Transparență carduri"><input type="file" id="tf" accept="image/*" hidden><div class="sub" style="margin:0">Buget lunar (RON)</div><input type="number" id="bud" inputmode="numeric" placeholder="ex. 2000" aria-label="Buget lunar în RON" style="width:100%;margin:6px 0 16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px"><div class="sub" style="margin:0">Securitate</div><div class="cr"><label><input type="checkbox" id="fid">Blocare cu Face ID</label></div><p class="sub" id="fidn" style="margin:4px 0 16px">Cere Face ID la deschidere și după 1 minut în fundal. Protejează doar acest hub, pe acest telefon.</p><div class="sub" style="margin:0">Carduri · arată, ascunde, mută</div><div id="cl"></div></dialog>
 
+<div id="intro" aria-live="polite"><small>PORTOFOLIU · BURSA</small><div class="xf" id="fi" role="img"></div><span class="xl">RON</span><p id="ip"></p><span class="hint">Atinge ca să continui</span></div>
 <div id="lock" role="dialog" aria-modal="true" aria-label="Hub blocat"><svg width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M9 10v1.5M15 10v1.5M12 10v3.500h-1M9 16c1.5 1.4 4.5 1.4 6 0"/></svg><h2>Hub blocat</h2><p>Banii și datele tale rămân ascunse până te recunoaște.</p><button class="btn" id="unlock" type="button">Deblochează cu Face ID</button><p id="lerr" role="status"></p></div>
 <script>
 /* 1) Adresele aplicațiilor — schimbă-le dacă sunt altele */
@@ -293,7 +302,7 @@ function build(){
  $("c-obs").innerHTML='<h2>Observații</h2><p>Calculate singure din datele tale</p><div style="margin-top:6px">'+(ob.length?ob.slice(0,5).map(function(x){return '<div class="ob"><i style="background:'+x.c+'"></i><div><b>'+x.t+'</b><span>'+x.s+'</span></div></div>'}).join(""):'<div class="ob"><div><b style="font-weight:500;color:var(--mu)">Încă nu am destule date ca să observ ceva. Pe măsură ce adaugi, apar aici.</b></div></div>')+'</div>';
  LAST=R;renderCal();renderWrap();
  /* afisaj */
- flipSet("fv",fm(R.tot));
+ $("fvn").textContent=fm(R.tot);INTRO={tot:R.tot,pl:R.tot-R.cost,pct:R.cost>0?(R.tot-R.cost)/R.cost*100:null};if(introOpen){flipSet("fi",fm(R.tot));fitIntro();$("ip").textContent=introLine()}
  /* insigne pe file */
  [["facturi",un.length],["crm",R.rem.length+bd7.length+an7.length]].forEach(function(x){var a=document.querySelector('#tabs a[href="#'+x[0]+'"]');if(!a)return;var b=a.querySelector(".bd");if(b)b.remove();if(x[1]>0){b=document.createElement("b");b.className="bd";b.textContent=x[1];a.appendChild(b)}});
  /* cautare */
@@ -360,7 +369,7 @@ function cur(){if(CFG.th==="poza")return["poza","Poza mea","linear-gradient(rgba
 function name(id){return CARDS.filter(function(c){return c[0]===id})[0][1]}
 function apply(){var T=cur(),R=document.documentElement.style;R.setProperty("--cr",T[3]);R.setProperty("--bx",T[4]);R.setProperty("--ca",CFG.ca!=null?CFG.ca:T[5]);R.setProperty("--lime",CFG.acc);
  document.body.style.background=T[2];document.body.style.backgroundAttachment="fixed";
- CFG.order.forEach(function(id,i){var e=$(id);e.style.order=i;e.hidden=CFG.hide.indexOf(id)>-1});
+ CFG.order.forEach(function(id,i){var e=$(id);e.style.order=i;e.hidden=CFG.hide.indexOf(id)>-1});if(window.HF)Object.keys(HF).forEach(function(k){themeFrame(HF[k])});
  try{localStorage.setItem("hubCfg",JSON.stringify(CFG))}catch(e){}}
 function panel(){var T=cur(),a=CFG.ca!=null?CFG.ca:T[5],tp=Math.round((1-a)/.7*100);
  $("th").innerHTML=TH.map(function(t){return '<button type="button" data-t="'+t[0]+'" class="'+(CFG.th===t[0]?"on":"")+'" style="background:'+t[2]+'">'+t[1]+'</button>'}).join("")+'<button type="button" data-t="poza" class="'+(CFG.th==="poza"?"on":"")+'" style="background:'+(IMG?"linear-gradient(rgba(6,12,28,.4),rgba(6,12,28,.4)),url('"+IMG+"') center/cover":"rgba(255,255,255,.08)")+'">📷 Poza mea</button>';
@@ -413,13 +422,58 @@ if(!FID)document.documentElement.classList.remove("locked");
 
 /* Navigare: aplicațiile se deschid în hub; rămân încărcate după prima deschidere */
 var tb='<a href="#hub">Hub</a>';Object.keys(APPS).forEach(function(k){var b=DATA.badges[k];tb+='<a href="#'+k+'">'+APPS[k].n+(b?'<b class="bd">'+b+'</b>':"")+'</a>'});$("tabs").innerHTML=tb;
-var frames={};
-function render(){var cur=location.hash.slice(1)||"hub";if(cur!=="hub"&&!APPS[cur])cur="hub";
- document.querySelector("main").className=cur==="hub"?"":"off";document.body.classList.toggle("app",cur!=="hub");
- if(cur!=="hub"&&!frames[cur]){var f=document.createElement("iframe");f.className="fr";f.title=APPS[cur].n;f.src=APPS[cur].u;document.body.appendChild(f);frames[cur]=f}
- Object.keys(frames).forEach(function(k){frames[k].classList.toggle("on",k===cur)});
- $("tabs").querySelectorAll("a").forEach(function(a){var on=a.getAttribute("href")==="#"+cur;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
- var x=$("ext");x.hidden=cur==="hub";if(cur!=="hub")x.href=APPS[cur].u;window.scrollTo(0,0)}
+function appCss(T,acc,ca){var cr=T[3],bx=T[4],bg=T[2],G="rgba("+cr+","+ca+")",A2="color-mix(in srgb,"+acc+" 70%,#000)",I="!important";
+return [
+":root{color-scheme:dark"+I+";--bg:rgb("+bx+")"+I+";--ink:#f1f3f6"+I+";--tx:#f1f3f6"+I+";--mute:#9aa3b2"+I+";--mu:#9aa3b2"+I+";--line:rgba(255,255,255,.1)"+I+";--fill:rgba(255,255,255,.08)"+I+";--card:"+G+I+";--glass:"+G+I+";--glassb:rgba(255,255,255,.12)"+I+";--glassh:rgba(255,255,255,.2)"+I+";--bd:rgba(255,255,255,.12)"+I+";--gain:#5ff0b9"+I+";--loss:#ff8a8a"+I+";--warn:#ffd166"+I+";--info:#7dd3fc"+I+";--gp:#ffd166"+I+";--gr:#7dd3fc"+I+";--ui1:#4a505c"+I+";--ui2:#2d323c"+I+";--ac1:"+acc+I+";--ac2:"+acc+I+";--ac3:"+A2+I+";--g1:"+acc+I+";--g2:"+A2+I+";--g3:"+acc+I+"}",
+"html{background:"+bg+I+";background-attachment:fixed"+I+";min-height:100%}",
+"body{background:transparent"+I+";color:#f1f3f6"+I+"}",
+".orbs,#bgl{display:none"+I+"}",
+".card,.gl,.t,.alloc,.stats .t,.scene{background:"+G+I+";border:1px solid rgba(255,255,255,.1)"+I+";box-shadow:0 18px 40px -18px rgba(0,0,0,.6)"+I+";backdrop-filter:blur(18px)"+I+";-webkit-backdrop-filter:blur(18px)"+I+"}",
+".card::before,.card::after,.alloc::before,.stats .t::before,.t::before,.t::after{display:none"+I+"}",
+".hero{background:radial-gradient(110% 90% at 100% 0%,color-mix(in srgb,"+acc+" 26%,transparent),transparent 62%),"+G+I+";border:1px solid rgba(255,255,255,.12)"+I+";box-shadow:0 22px 50px -20px rgba(0,0,0,.7)"+I+";animation:none"+I+";color:#fff"+I+"}",
+".hero::before,.hero::after{display:none"+I+"}",
+".mo{background:linear-gradient(hsla(var(--h),70%,60%,.14),hsla(var(--h),70%,60%,.14)),"+G+I+"}",
+".bdg,#st,button.sm,button#x,button#cn,.pill,.x,.sz,.ck,.hero .row span,.hero>.eye,.tgi{background:rgba(255,255,255,.08)"+I+";border:1px solid rgba(255,255,255,.14)"+I+";color:var(--ink)"+I+";box-shadow:none"+I+"}",
+"input,select,textarea{background:rgba(255,255,255,.07)"+I+";border:1px solid rgba(255,255,255,.14)"+I+";color:var(--ink)"+I+"}",
+"option{background:rgb("+cr+")"+I+";color:#f1f3f6"+I+"}",
+"#nv,#nav{background:rgba("+bx+",.92)"+I+";border:1px solid rgba(255,255,255,.1)"+I+";box-shadow:0 20px 50px rgba(0,0,0,.5)"+I+";backdrop-filter:blur(18px)"+I+";-webkit-backdrop-filter:blur(18px)"+I+"}",
+"#nv button,#nav button{color:#9aa3b2"+I+";background:none"+I+"}",
+"#nv .on,#nav button.on{background:"+acc+I+";color:#10150a"+I+";box-shadow:none"+I+"}",
+"#fab,#add{background:"+acc+I+";color:#10150a"+I+";border:0"+I+";box-shadow:0 12px 30px rgba(0,0,0,.5)"+I+"}",
+"#fab::before,#fab::after,#add::before,#add::after,#askb::before,#askb::after,.orb::before{display:none"+I+"}",
+"#askb{background:rgba("+cr+",.9)"+I+";color:var(--ink)"+I+";border:1px solid rgba(255,255,255,.12)"+I+"}",
+"#sh,dialog,#ai{background:rgb("+cr+")"+I+";border:1px solid rgba(255,255,255,.1)"+I+";color:var(--ink)"+I+"}",
+"#sh .seg,.seg{background:rgba(255,255,255,.07)"+I+"}#sh .seg button.on{background:"+acc+I+";color:#10150a"+I+"}",
+"#sh .ok,.ok{background:linear-gradient(145deg,"+acc+","+A2+")"+I+";color:#10150a"+I+"}",
+"html body [class*=\"bg-slate-800/\"],html body [class*=\"bg-slate-900/\"]{background:"+G+I+";border-color:rgba(255,255,255,.1)"+I+";box-shadow:none"+I+"}",
+"html body button[class*=\"bg-slate-700\"],html body [class*=\"bg-violet-500/\"],html body [class*=\"bg-sky-500/\"],html body [class*=\"bg-emerald-500/\"],html body [class*=\"bg-rose-500/\"]{background:rgba(255,255,255,.09)"+I+";border-color:rgba(255,255,255,.14)"+I+";color:var(--ink)"+I+"}",
+"html body [class*=\"bg-violet-500 \"],html body [class*=\"from-emerald-500\"]{background:linear-gradient(145deg,"+acc+","+A2+")"+I+";color:#10150a"+I+"}",
+"html body input[class*=\"bg-slate\"],html body select[class*=\"bg-slate\"]{background:rgba(255,255,255,.07)"+I+";border-color:rgba(255,255,255,.14)"+I+";color:var(--ink)"+I+"}",
+"html body [class*=\"text-violet-\"]{color:"+acc+I+"}"
+].join("\n")}
+
+function themeFrame(f){try{var d=f.contentDocument;if(d&&d.head){var T=cur(),st=d.getElementById("hubtheme");if(!st){st=d.createElement("style");st.id="hubtheme";d.head.appendChild(st)}st.textContent=appCss(T,CFG.acc,CFG.ca!=null?CFG.ca:T[5])}
+ var w=f.contentWindow,C=w&&w.Chart;if(C){C.defaults.color="#9aa3b2";C.defaults.borderColor="rgba(255,255,255,.1)";Object.keys(C.instances||{}).forEach(function(k){var c=C.instances[k],sc=(c.options&&c.options.scales)||{};Object.keys(sc).forEach(function(a){var q=sc[a];if(q.ticks)q.ticks.color="#9aa3b2";if(q.grid&&q.grid.color!==undefined)q.grid.color="rgba(255,255,255,.1)";if(q.title)q.title.color="#9aa3b2"});try{var lg=c.options.plugins.legend.labels;if(lg)lg.color="#9aa3b2"}catch(e){}try{c.update("none")}catch(e){}})}
+ }catch(e){}f.classList.add("rdy")}
+var INTRO={tot:0,pl:0,pct:null},introOpen=false,introT=0,PREV="";
+function introLine(){return INTRO.pct==null?"":"Profit latent "+(INTRO.pl>=0?"+":"−")+fm(Math.abs(INTRO.pl))+" RON ("+pc(INTRO.pct)+")"}
+function fitIntro(){var f=$("fi");f.style.transform="";var w=f.scrollWidth,mw=$("intro").clientWidth-40;if(w>mw&&mw>0)f.style.transform="scale("+(mw/w)+")"}
+function showIntro(){var el=$("intro"),fi=$("fi");introOpen=true;el.classList.remove("out");el.classList.add("on");fi.dataset.p="";fi.innerHTML="";flipSet("fi",fm(INTRO.tot));fitIntro();$("ip").textContent=introLine();clearTimeout(introT);introT=setTimeout(hideIntro,3600)}
+function hideIntro(){var el=$("intro");if(!introOpen)return;introOpen=false;clearTimeout(introT);el.classList.add("out");setTimeout(function(){if(!introOpen)el.classList.remove("on","out")},350)}
+$("intro").addEventListener("click",hideIntro);
+$("lgt").addEventListener("click",function(){var h=document.documentElement.classList.toggle("nav-off");this.setAttribute("aria-expanded",!h);this.setAttribute("aria-label",h?"Arată meniul":"Ascunde meniul");try{localStorage.setItem("hubNav",h?"0":"1")}catch(e){}});
+if(document.documentElement.classList.contains("nav-off")){$("lgt").setAttribute("aria-expanded","false");$("lgt").setAttribute("aria-label","Arată meniul")}
+var HF={};
+function render(){
+  var cur=location.hash.slice(1)||"hub";if(cur!=="hub"&&!APPS[cur])cur="hub";
+  document.querySelector("main").className=cur==="hub"?"":"off";document.body.classList.toggle("app",cur!=="hub");
+  if(cur!=="hub"&&!HF[cur]){var f=document.createElement("iframe");f.className="fr";f.title=APPS[cur].n;f.addEventListener("load",function(){themeFrame(f)});f.src=APPS[cur].u;document.body.appendChild(f);HF[cur]=f}
+  Object.keys(HF).forEach(function(k){HF[k].classList.toggle("on",k===cur)});
+  $("tabs").querySelectorAll("a").forEach(function(a){var on=a.getAttribute("href")==="#"+cur;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  var x=$("ext");x.hidden=cur==="hub";if(cur!=="hub")x.href=APPS[cur].u;window.scrollTo(0,0);
+  if(cur!=="hub"&&HF[cur])setTimeout(function(){themeFrame(HF[cur])},350);
+  if(cur==="bursa"&&PREV!=="bursa")showIntro();else if(cur!=="bursa")hideIntro();
+  PREV=cur}
 addEventListener("hashchange",render);render();
 
 /* Vreme și curs — date reale, publice */
