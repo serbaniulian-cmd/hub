@@ -125,8 +125,8 @@ body.priv #fvn,body.priv #intro .xf{filter:blur(12px)}
 <p class="ex" id="ex"></p>
 </main>
 <button class="fab" id="fab" type="button">+ Adaugă</button>
-<dialog id="add"><h2>Adaugă</h2><div class="qa"><input id="qa" type="text" placeholder="ex. am încărcat 30 kWh la Eldrive, 74 lei" aria-label="Scrie sau spune ce vrei să adaugi" autocomplete="off" enterkeyhint="go"><button id="qgo" class="btn" type="button">Înțelege</button></div><div id="qr" role="status" aria-live="polite"></div><div class="sub" style="margin:14px 0 0">Sau deschide aplicația:</div><a class="opt" href="#masina">Încărcare nouă <em>Mașină</em></a><a class="opt" href="#facturi">Factură nouă <em>Facturi</em></a><a class="opt" href="#crm">Persoană nouă <em>Mini-CRM</em></a><a class="opt" href="#bursa">Tranzacție nouă <em>Bursa</em></a><p class="sub">Te duce în aplicația respectivă, la butonul ei de adăugare.</p></dialog>
-<dialog id="set"><h2>Aspect</h2><div class="sub" style="margin:0 0 8px">Temă</div><div class="th" id="th"></div><div class="sub" style="margin:0 0 8px">Culoare accent</div><div class="sw" id="sw"></div><div class="sub" style="margin:0">Transparență carduri <b id="cav"></b></div><input type="range" id="ca" min="0" max="100" aria-label="Transparență carduri"><input type="file" id="tf" accept="image/*" hidden><div class="sub" style="margin:0">Buget lunar (RON)</div><input type="number" id="bud" inputmode="numeric" placeholder="ex. 2000" aria-label="Buget lunar în RON" style="width:100%;margin:6px 0 16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px"><div class="sub" style="margin:0">Securitate</div><div class="cr"><label><input type="checkbox" id="fid">Blocare cu Face ID</label></div><p class="sub" id="fidn" style="margin:4px 0 16px">Cere Face ID la deschidere și după 1 minut în fundal. Protejează doar acest hub, pe acest telefon.</p><div class="sub" style="margin:0">Carduri · arată, ascunde, mută</div><div id="cl"></div></dialog>
+<dialog id="add"><h2>Adaugă</h2><div class="qa"><input id="qa" type="text" placeholder="ex. am încărcat 30 kWh la Eldrive, 74 lei" aria-label="Scrie sau spune ce vrei să adaugi" autocomplete="off" enterkeyhint="go"><button id="qgo" class="btn" type="button">Înțelege</button></div><div id="qr" role="status" aria-live="polite"></div><p class="sub" style="margin:10px 0 0">Exemple: „am încărcat 30 kWh la Eldrive, 74 lei” · „am cumpărat 10 TLV la 31,5” · „am plătit factura la apă” · „memento indexul la apă pe 20” · „persoană Maria, născută 14.03.1990” · „eveniment vizită doctor 12.12.2026”</p><div class="sub" style="margin:14px 0 0">Sau deschide aplicația:</div><a class="opt" href="#masina">Încărcare nouă <em>Mașină</em></a><a class="opt" href="#facturi">Factură nouă <em>Facturi</em></a><a class="opt" href="#crm">Persoană nouă <em>Mini-CRM</em></a><a class="opt" href="#bursa">Tranzacție nouă <em>Bursa</em></a><p class="sub">Te duce în aplicația respectivă, la butonul ei de adăugare.</p></dialog>
+<dialog id="set"><h2>Aspect</h2><div class="sub" style="margin:0 0 8px">Temă</div><div class="th" id="th"></div><div class="sub" style="margin:0 0 8px">Culoare accent</div><div class="sw" id="sw"></div><div class="sub" style="margin:0">Transparență carduri <b id="cav"></b></div><input type="range" id="ca" min="0" max="100" aria-label="Transparență carduri"><input type="file" id="tf" accept="image/*" hidden><div class="sub" style="margin:0">Buget lunar (RON)</div><input type="number" id="bud" inputmode="numeric" placeholder="ex. 2000" aria-label="Buget lunar în RON" style="width:100%;margin:6px 0 16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px"><div class="sub" style="margin:0">Legături între aplicații</div><div class="cr"><label><input type="checkbox" id="fl">Facturile scadente → memento în Mini-CRM</label></div><p class="sub" style="margin:4px 0 16px">Adaugă în Mini-CRM un eveniment pentru fiecare factură de plătit care scade în următoarele 7 zile.</p><div class="sub" style="margin:0">Securitate</div><div class="cr"><label><input type="checkbox" id="fid">Blocare cu Face ID</label></div><p class="sub" id="fidn" style="margin:4px 0 16px">Cere Face ID la deschidere și după 1 minut în fundal. Protejează doar acest hub, pe acest telefon.</p><div class="sub" style="margin:0">Carduri · arată, ascunde, mută</div><div id="cl"></div></dialog>
 
 <div id="intro" aria-live="polite"><small>PORTOFOLIU · BURSA</small><div class="xf" id="fi" role="img"></div><span class="xl">RON</span><p id="ip"></p><span class="hint">Atinge ca să continui</span></div>
 <div id="lock" role="dialog" aria-modal="true" aria-label="Hub blocat"><svg width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M9 10v1.5M15 10v1.5M12 10v3.500h-1M9 16c1.5 1.4 4.5 1.4 6 0"/></svg><h2>Hub blocat</h2><p>Banii și datele tale rămân ascunse până te recunoaște.</p><button class="btn" id="unlock" type="button">Deblochează cu Face ID</button><p id="lerr" role="status"></p></div>
@@ -174,13 +174,20 @@ function spk(a,bars){if(!a.some(function(v){return v>0}))return"";var m=Math.max
  if(bars)return '<svg viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">'+a.map(function(v,i){var h=4+v/m*24;return '<rect x="'+(i*w+w*.15)+'" y="'+(28-h)+'" width="'+w*.7+'" height="'+h+'" rx="2" fill="rgba(255,255,255,.45)"/>'}).join("")+'</svg>';
  return '<svg viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" points="'+a.map(function(v,i){return (i/(a.length-1)*100)+","+(26-(v-n)/(m-n||1)*24)}).join(" ")+'"/></svg>'}
 /* Adăugare scriind (și prin Siri): înțelege fraza, arată ce a înțeles, salvează doar după ce confirmi */
-var PENDING=null;
+var PENDING=null,uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)},SYNC=false,SYN=[];try{SYN=JSON.parse(localStorage.getItem("hubSyn")||"[]")}catch(e){}
+function crmReload(){crmPull();try{if(HF.crm&&HF.crm.contentWindow)HF.crm.contentWindow.location.reload()}catch(e){}}
+async function crmAppend(sub,items){var u=CRM_DB+"/crm/"+sub+".json",cur=await (await fetch(u)).json(),n=0;if(cur)Object.keys(cur).forEach(function(k){if(+k>=n)n=+k+1});var body={};items.forEach(function(o,i){body[n+i]=o});var r=await fetch(u,{method:"PATCH",body:JSON.stringify(body)});if(!r.ok)throw new Error("crm");crmReload()}
 function parseAdd(x){var t=nz(x),R=LAST||{bills:[],st:[]},nm=function(v){return parseFloat(String(v).replace(",","."))},d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-(/\bieri\b/.test(t)?1:0)),ds=d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()),m,E="Nu am înțeles. Încearcă: „am încărcat 30 kWh la Eldrive, 74 lei”, „am cumpărat 10 TLV la 31,5” sau „am plătit factura la apă”.";
  if((m=t.match(/(\d+[.,]?\d*)\s*kwh/))){var kw=nm(m[1]),pm=t.replace(m[0],"").match(/(\d+[.,]?\d*)\s*(lei|ron)/);if(!pm)return{e:"Câți lei ai plătit? Ex.: „am încărcat 30 kWh la Eldrive, 74 lei”."};
   var st=arr(R.st).filter(function(s){return t.indexOf(nz(s.n).split(" ")[0])>-1})[0];if(!st)return{e:"Nu știu la ce stație. Spune-i numele, ex.: "+arr(R.st).slice(0,2).map(function(s){return s.n}).join(" sau ")+"."};
   return{k:"masina",l:"Încărcare · "+nf(kw)+" kWh · "+st.n+" · "+nf(nm(pm[1]))+" RON · "+ds,o:{d:ds,k:kw,p:nm(pm[1]),s:st.n}}}
  if((m=t.match(/(cumpar\w*|vand\w*)\s+(\d+[.,]?\d*)\s+([a-z0-9]{2,12})\s+(?:la|cu|pe)\s+(\d+[.,]?\d*)/))){var b=/^cump/.test(m[1]),cm=t.match(/comision\s+(\d+[.,]?\d*)/),sy=m[3].toUpperCase();
   return{k:"bursa",l:(b?"Cumpărat ":"Vândut ")+nf(nm(m[2]))+" × "+sy+" la "+nf(nm(m[4]))+" RON · "+ds,o:{id:Date.now().toString(36),d:ds,s:sy,t:b?"B":"V",q:nm(m[2]),p:nm(m[4]),f:cm?nm(cm[1]):0}}}
+ var DM=function(q){var a=q.match(/(\d{1,2})[.\/](\d{1,2})[.\/](\d{4})/);if(a)return a[3]+"-"+pad(+a[2])+"-"+pad(+a[1]);var Z=["ianuarie","februarie","martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"];a=q.match(/(\d{1,2})\s+([a-z]+)\s+(\d{4})/);if(a&&Z.indexOf(a[2])>-1)return a[3]+"-"+pad(Z.indexOf(a[2])+1)+"-"+pad(+a[1]);return null},cut=function(mm,g){return x.substr(mm.index+mm[0].indexOf(mm[g]),mm[g].length).trim()};
+ if((m=t.match(/(?:eveniment|programare|aniversare)\s+(.+?)\s+(?:pe\s+|la\s+)?(\d{1,2}[.\/]\d{1,2}[.\/]\d{4}|\d{1,2}\s+[a-z]+\s+\d{4})/))&&DM(m[2]))return{k:"crm",sub:"ann",l:"Mini-CRM · eveniment · "+cut(m,1)+" · "+DM(m[2]),o:{id:uid(),text:cut(m,1),date:DM(m[2])}};
+ if((m=t.match(/(?:memento|aminteste-mi|amintire)\s+(.+?)\s+(?:pe|in|la)\s+(\d{1,2})\s*$/))){var dz=+m[2];if(dz<1||dz>28)return{e:"Ziua memento-ului trebuie să fie între 1 și 28."};return{k:"crm",sub:"rem",l:"Mini-CRM · memento lunar · "+cut(m,1)+" · în ziua "+dz,o:{id:uid(),text:cut(m,1),days:[dz],done:{}}}}
+ if((m=t.match(/(?:persoana|contact|zi de nastere(?: a lui| pentru)?)\s+([a-z\- ]+?)\s*(?:,|nascut\w*|\bpe\b|\bla\b|\d|$)/))){var bd=DM(t);if(!bd)return{e:"Spune și data nașterii completă, ex.: „persoană Maria, născută 14.03.1990”."};
+  var nm2=cut(m,1).replace(/\b\w/g,function(c){return c.toUpperCase()});return{k:"crm",sub:"people",l:"Mini-CRM · persoană · "+nm2+" · născut "+bd,o:{id:uid(),name:nm2,rel:"",ph:"",bd:bd,nt:""}}}
  if(/plat\w*/.test(t)&&/factur|curent|electric|\bapa\b|gaz|digi|internet/.test(t)){var f=/curent|electric/.test(t)?0:/\bapa\b/.test(t)?1:/\bgaz\b/.test(t)?2:/digi|internet/.test(t)?3:-1,h=/parint/.test(t)?"p":/\bnoi\b|noastr/.test(t)?"n":"",c=R.bills.filter(function(b){return !b.paid&&(f<0||b.f===f)&&(!h||b.t===h)}).sort(function(a,b){return (a.days==null?9e3:a.days)-(b.days==null?9e3:b.days)})[0];
   if(!c)return{e:"Nu găsesc o factură de plătit pentru asta."};if(!localStorage.getItem("sincronizare_cod_2027"))return{e:"Facturile cer codul tău de sincronizare. Deschide o dată fila Facturi."};
   return{k:"facturi",l:"Marchez plătită: "+c.name+" · "+fm(c.a)+" RON",o:c.t+"_status_"+c.l+"_"+c.f}}
@@ -188,8 +195,9 @@ function parseAdd(x){var t=nz(x),R=LAST||{bills:[],st:[]},nm=function(v){return 
 function showAdd(x){var r=$("qr");if(!x.trim()){r.innerHTML="";return}var a=parseAdd(x);PENDING=a.e?null:a;
  r.innerHTML=a.e?'<div class="er">'+a.e+'</div>':'<div class="opt">'+a.l+'</div><button type="button" class="btn" id="qsv">Salvează</button><button type="button" class="b2" id="qcn">Anulează</button>'}
 async function saveAdd(){var a=PENDING,r=$("qr");if(!a)return;
- try{var fv=firebase.firestore.FieldValue;
+ try{var fv=window.firebase&&firebase.firestore?firebase.firestore.FieldValue:null;
   if(a.k==="masina")await FBm.firestore().collection("app").doc("masina").update({charges:fv.arrayUnion(a.o)});
+  else if(a.k==="crm")await crmAppend(a.sub,[a.o]);
   else if(a.k==="bursa")await FBb.firestore().collection("bursa").doc("date").update({tr:fv.arrayUnion(a.o)});
   else{var u={};u[a.o]=true;await FBf.firestore().collection("facturi2027").doc(localStorage.getItem("sincronizare_cod_2027")).update(u)}
   PENDING=null;r.innerHTML='<div class="opt">Salvat ✓ '+a.l+'</div>';$("qa").value="";setTimeout(function(){$("add").close()},900)}
@@ -278,11 +286,11 @@ function build(){
  $("tp").innerHTML=tp.length?tp.map(function(r){return '<div class="lr"><span>'+r.s+'</span><span class="up">▲ '+pc(r.day)+'</span></div>'}).join(""):'<p>—</p>';
  $("fp").innerHTML=fp.length?fp.map(function(r){return '<div class="lr"><span>'+r.s+'</span><span class="dn">▼ '+pc(r.day)+'</span></div>'}).join(""):'<p>—</p>';
  /* azi */
- var az=[];R.rem.forEach(function(r){az.push([r.text,"Mini-CRM"])});
+ var az=[];R.rem.forEach(function(r){az.push([r.text,"Mini-CRM",/index|factur/i.test(r.text)?"facturi":""])});
  due7.forEach(function(b){az.push([b.name,b.days<0?"întârziată":b.days===0?"azi":"în "+pl(b.days,"zi","zile")])});
  bd7.forEach(function(b){az.push(["Zi de naștere: "+b.name,b.days===0?"azi":"în "+pl(b.days,"zi","zile")])});
  an7.forEach(function(a){az.push([a.text,a.days===0?"azi":"în "+pl(a.days,"zi","zile")])});
- $("azi").innerHTML=(az.length?az:[["Nimic de făcut azi",""]]).map(function(r){return '<label class="row"><input type="checkbox" aria-label="'+r[0]+'"><span>'+r[0]+'</span>'+(r[1]?'<em>'+r[1]+'</em>':"")+'</label>'}).join("");
+ $("azi").innerHTML=(az.length?az:[["Nimic de făcut azi",""]]).map(function(r){return '<label class="row"><input type="checkbox" aria-label="'+r[0]+'"><span>'+r[0]+'</span>'+(r[1]?'<em>'+(r[2]?'<a href="#'+r[2]+'" style="color:inherit;text-decoration:none">Deschide Facturi ›</a>':r[1])+'</em>':"")+'</label>'}).join("");
  /* observatii automate */
  var ob=[],by={};
  R.bills.forEach(function(b){(by[b.name]=by[b.name]||[]).push(b)});
@@ -301,6 +309,10 @@ function build(){
  ob.sort(function(a,b){return a.w-b.w});
  $("c-obs").innerHTML='<h2>Observații</h2><p>Calculate singure din datele tale</p><div style="margin-top:6px">'+(ob.length?ob.slice(0,5).map(function(x){return '<div class="ob"><i style="background:'+x.c+'"></i><div><b>'+x.t+'</b><span>'+x.s+'</span></div></div>'}).join(""):'<div class="ob"><div><b style="font-weight:500;color:var(--mu)">Încă nu am destule date ca să observ ceva. Pe măsură ce adaugi, apar aici.</b></div></div>')+'</div>';
  LAST=R;renderCal();renderWrap();
+ /* legatura: facturi scadente -> evenimente in Mini-CRM (doar daca e bifat) */
+ if(CFG.fl&&!SYNC){var Dc=CL.crm||ls("crm")||{},ex=arr(Dc.ann).map(function(a){return a.date+"|"+a.text}),todo=R.bills.filter(function(b){return !b.paid&&b.ds&&b.days!=null&&b.days>=0&&b.days<=7}).map(function(b){return{date:b.ds,text:"Scadență: "+b.name+" · "+fm(b.a)+" RON"}}).filter(function(o){var k=o.date+"|"+o.text;return ex.indexOf(k)<0&&SYN.indexOf(k)<0});
+  if(todo.length){SYNC=true;todo.forEach(function(o){SYN.push(o.date+"|"+o.text)});try{localStorage.setItem("hubSyn",JSON.stringify(SYN.slice(-200)))}catch(e){}
+   crmAppend("ann",todo.map(function(o){return{id:uid(),text:o.text,date:o.date}})).catch(function(){}).then(function(){SYNC=false})}}
  /* afisaj */
  $("fvn").textContent=fm(R.tot);INTRO={tot:R.tot,pl:R.tot-R.cost,pct:R.cost>0?(R.tot-R.cost)/R.cost*100:null};if(introOpen){flipSet("fi",fm(R.tot));fitIntro();$("ip").textContent=introLine()}
  /* insigne pe file */
@@ -362,8 +374,8 @@ var TH=[["lime","Lime noapte","radial-gradient(70% 38% at 100% 100%,rgba(130,78,
  ["grafit","Grafit","linear-gradient(170deg,#1c1e23,#0e0f12)","30,32,37","16,17,20",.8,"#f1f5f9"]],
  CARDS=[["c-next","Următoarea mișcare"],["c-obs","Observații"],["c-kpi","Rezumat"],["c-flip","Afișaj cifre"],["c-cal","Calendar"],["c-chart","Cheltuieli lunare"],["c-pos","Poziții la bursă"],["c-top","Bursa azi"],["c-azi","Azi"],["c-wrap","Rezumat lunar"]],
  ACC=[["#c6f432","Lime"],["#f472b6","Roz"],["#60a5fa","Albastru"],["#fb923c","Portocaliu"],["#2dd4bf","Turcoaz"]],
- CFG={th:"lime",acc:"#c6f432",ca:null,order:CARDS.map(function(c){return c[0]}),hide:[]},IMG="";
-try{IMG=localStorage.getItem("hubBgImg")||"";var sv=JSON.parse(localStorage.getItem("hubCfg")||"{}");if(sv.th)CFG.th=sv.th;if(sv.acc)CFG.acc=sv.acc;if(sv.ca!=null)CFG.ca=sv.ca;if(sv.order){var ids=CARDS.map(function(c){return c[0]}),so=sv.order.filter(function(x){return ids.indexOf(x)>-1});ids.forEach(function(x){if(so.indexOf(x)<0)so.push(x)});CFG.order=so}if(sv.hide)CFG.hide=sv.hide}catch(e){}
+ CFG={th:"lime",acc:"#c6f432",ca:null,fl:false,order:CARDS.map(function(c){return c[0]}),hide:[]},IMG="";
+try{IMG=localStorage.getItem("hubBgImg")||"";var sv=JSON.parse(localStorage.getItem("hubCfg")||"{}");if(sv.th)CFG.th=sv.th;if(sv.acc)CFG.acc=sv.acc;if(sv.ca!=null)CFG.ca=sv.ca;if(sv.fl)CFG.fl=true;if(sv.order){var ids=CARDS.map(function(c){return c[0]}),so=sv.order.filter(function(x){return ids.indexOf(x)>-1});ids.forEach(function(x){if(so.indexOf(x)<0)so.push(x)});CFG.order=so}if(sv.hide)CFG.hide=sv.hide}catch(e){}
 if(CFG.th==="poza"&&!IMG)CFG.th="lime";
 function cur(){if(CFG.th==="poza")return["poza","Poza mea","linear-gradient(rgba(6,12,28,.55),rgba(6,12,28,.55)),url('"+IMG+"') center/cover","16,26,52","10,18,34",.7,"#f472b6"];return TH.filter(function(t){return t[0]===CFG.th})[0]||TH[0]}
 function name(id){return CARDS.filter(function(c){return c[0]===id})[0][1]}
@@ -374,12 +386,13 @@ function apply(){var T=cur(),R=document.documentElement.style;R.setProperty("--c
 function panel(){var T=cur(),a=CFG.ca!=null?CFG.ca:T[5],tp=Math.round((1-a)/.7*100);
  $("th").innerHTML=TH.map(function(t){return '<button type="button" data-t="'+t[0]+'" class="'+(CFG.th===t[0]?"on":"")+'" style="background:'+t[2]+'">'+t[1]+'</button>'}).join("")+'<button type="button" data-t="poza" class="'+(CFG.th==="poza"?"on":"")+'" style="background:'+(IMG?"linear-gradient(rgba(6,12,28,.4),rgba(6,12,28,.4)),url('"+IMG+"') center/cover":"rgba(255,255,255,.08)")+'">📷 Poza mea</button>';
  $("sw").innerHTML=ACC.map(function(c){return '<button type="button" data-c="'+c[0]+'" aria-label="'+c[1]+'" class="'+(CFG.acc===c[0]?"on":"")+'" style="background:'+c[0]+'"></button>'}).join("");
- $("ca").value=tp;$("cav").textContent=tp+"%";$("fid").checked=!!FID;$("bud").value=BUD||"";
+ $("ca").value=tp;$("cav").textContent=tp+"%";$("fid").checked=!!FID;$("fl").checked=!!CFG.fl;$("bud").value=BUD||"";
  $("cl").innerHTML=CFG.order.map(function(id,i){return '<div class="cr"><label><input type="checkbox" data-v="'+id+'"'+(CFG.hide.indexOf(id)<0?" checked":"")+'>'+name(id)+'</label><button type="button" data-u="'+i+'" aria-label="Mută în sus">↑</button><button type="button" data-d="'+i+'" aria-label="Mută în jos">↓</button></div>'}).join("")}
 function loadImg(f){if(!f)return;var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var sc=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
  var u=c.toDataURL("image/jpeg",.75);try{localStorage.setItem("hubBgImg",u)}catch(e){u=c.toDataURL("image/jpeg",.45);try{localStorage.setItem("hubBgImg",u)}catch(e2){alert("Poza e prea mare pentru acest dispozitiv.");return}}
  IMG=u;CFG.th="poza";CFG.acc="#f472b6";CFG.ca=null;apply();panel()};im.src=fr.result};fr.readAsDataURL(f)}
 $("set").addEventListener("click",function(e){var t=e.target,o=CFG.order;
+ if(t.id==="fid"||t.id==="fl"||t.id==="bud"||t.id==="ca")return;
  if(t===$("set")){$("set").close();return}
  if(t.dataset.t){if(t.dataset.t==="poza"&&!IMG){$("tf").click();return}CFG.th=t.dataset.t;CFG.ca=null;CFG.acc=cur()[6]}
  if(t.dataset.c)CFG.acc=t.dataset.c;
@@ -389,6 +402,7 @@ $("set").addEventListener("click",function(e){var t=e.target,o=CFG.order;
  apply();panel()});
 $("ca").addEventListener("input",function(){CFG.ca=+(1-.7*this.value/100).toFixed(2);$("cav").textContent=this.value+"%";apply()});
 $("bud").addEventListener("input",function(){BUD=+this.value||0;try{localStorage.setItem("hubBudget",BUD)}catch(e){}sched()});
+$("fl").addEventListener("change",function(){CFG.fl=this.checked;apply();if(this.checked)sched()});
 $("tf").addEventListener("change",function(){loadImg(this.files[0])});
 $("pal").addEventListener("click",function(){panel();$("set").showModal()});
 $("fab").addEventListener("click",function(){$("add").showModal()});
