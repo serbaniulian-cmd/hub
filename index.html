@@ -6,6 +6,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0d0f12">
 <title>Hub</title>
+<link rel="manifest" href="hub.webmanifest">
+<link rel="apple-touch-icon" href="hub-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="hub-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="hub-64.png">
 <script>try{if(localStorage.getItem("hubNav")==="0")document.documentElement.classList.add("nav-off")}catch(e){}</script>
 <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>try{if(localStorage.getItem("hubFid"))document.documentElement.classList.add("locked")}catch(e){}</script>
@@ -456,6 +460,10 @@ return [
 "#fab,#add{background:"+acc+I+";color:#10150a"+I+";border:0"+I+";box-shadow:0 12px 30px rgba(0,0,0,.5)"+I+"}",
 "#fab::before,#fab::after,#add::before,#add::after,#askb::before,#askb::after,.orb::before{display:none"+I+"}",
 "#askb{background:rgba("+cr+",.9)"+I+";color:var(--ink)"+I+";border:1px solid rgba(255,255,255,.12)"+I+"}",
+".wave,.trl{display:none"+I+"}",
+"#askb{animation:none"+I+";box-shadow:0 10px 28px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12)"+I+"}",
+".orb{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.55),"+acc+" 55%,"+A2+")"+I+";box-shadow:0 4px 14px rgba(0,0,0,.4)"+I+"}",
+".orb::before,.orb::after{display:none"+I+"}",
 "#sh,dialog,#ai{background:rgb("+cr+")"+I+";border:1px solid rgba(255,255,255,.1)"+I+";color:var(--ink)"+I+"}",
 "#sh .seg,.seg{background:rgba(255,255,255,.07)"+I+"}#sh .seg button.on{background:"+acc+I+";color:#10150a"+I+"}",
 "#sh .ok,.ok{background:linear-gradient(145deg,"+acc+","+A2+")"+I+";color:#10150a"+I+"}",
