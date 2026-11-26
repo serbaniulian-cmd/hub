@@ -1,0 +1,28 @@
+{
+ "name": "Hub",
+ "short_name": "Hub",
+ "description": "Toate aplicațiile tale într-un singur loc",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0d0f12",
+ "theme_color": "#0d0f12",
+ "icons": [
+  {
+   "src": "hub-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "hub-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "hub-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
