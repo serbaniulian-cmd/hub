@@ -105,6 +105,11 @@ html.nav-off #tabs,html.nav-off #ext{display:none}
 #intro small{font-weight:800;letter-spacing:1.5px;font-size:12px;color:var(--lime)}#intro .xf{transform-origin:center}#intro .xc{width:54px;height:88px;font-size:62px}#intro .xs{font-size:50px}#intro p{margin:0;color:var(--mu);font-size:15px;min-height:1.4em}#intro .hint{font-size:12px;color:var(--mu);opacity:.7}
 body.priv #fvn,body.priv #intro .xf{filter:blur(12px)}
 @media(prefers-reduced-motion:reduce){#intro.on{animation:none}}
+#svcnew{white-space:nowrap}.sbar{height:7px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}.sbar i{display:block;height:100%;border-radius:9px}.g2{font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--lime);margin:12px 0 2px}
+.fld{margin-top:10px}.fld label{display:block;font-size:12px;color:var(--mu);margin-bottom:4px}.fld input{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{padding:9px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:13px}.chips button.on{background:var(--lime);color:var(--on);font-weight:700;border-color:var(--lime)}
+.cz{display:flex;gap:14px;margin-top:14px}.cdate{flex:none;width:92px;border-radius:18px;background:var(--lime);color:var(--on);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 0}.cdate small{font-size:11px;font-weight:800}.cdate b{font-size:50px;letter-spacing:-3px;line-height:1}.clist{flex:1;min-width:0}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:14px;text-align:center}.wc{border-radius:14px;padding:8px 0}.wc small{display:block;font-size:11px;color:var(--mu)}.wc b{display:block;font-size:17px;margin:2px 0 4px}.wc.t{background:var(--lime);color:var(--on)}.wc.t small{color:var(--on)}.pd{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px}
 @media(min-width:900px){html.nav-off #bar{width:70px;padding-left:14px;padding-right:14px}html.nav-off body{padding-left:100px}html.nav-off .fr,html.nav-off #intro{left:70px;width:calc(100% - 70px)}#intro{left:240px;top:0;height:100vh;height:100dvh;width:calc(100% - 240px)}}
 @media(min-width:900px){body{padding:30px 30px 60px 270px}#bar{right:auto;bottom:0;width:240px;flex-direction:column;align-items:stretch;padding:24px 14px;border-right:1px solid var(--line);border-bottom:0}.lg{margin-bottom:8px}#tabs{flex-direction:column;overflow:visible;flex:none}#tabs a{padding:12px 14px}#ext{width:auto;margin-top:auto;padding:0 14px;height:42px}.fr{left:240px;top:0;width:calc(100% - 240px);height:100vh;height:100dvh}main{max-width:760px}.fab{right:30px}}
 </style>
@@ -124,22 +129,25 @@ body.priv #fvn,body.priv #intro .xf{filter:blur(12px)}
 <section id="c-pos" class="card"><h2>Poziții la bursă</h2><p>Ponderea fiecăreia în portofoliu</p><div id="pz"></div></section>
 <section id="c-top" class="card"><h2>Bursa azi</h2><div class="two"><div><h3>Top</h3><div id="tp"></div></div><div><h3>Flop</h3><div id="fp"></div></div></div></section>
 <section id="c-azi" class="card"><h2>Azi</h2><p>Memento-uri, scadențe, zile de naștere</p><div id="azi" style="margin-top:6px"></div><a class="mo" href="#crm">Deschide Mini-CRM ›</a></section>
+<section id="c-car" class="card"></section>
+<section id="c-stare" class="card"></section>
 <section id="c-wrap" class="card wrap"></section>
 </div>
 <p class="ex" id="ex"></p>
 </main>
 <button class="fab" id="fab" type="button">+ Adaugă</button>
 <dialog id="add"><h2>Adaugă</h2><div class="qa"><input id="qa" type="text" placeholder="ex. am încărcat 30 kWh la Eldrive, 74 lei" aria-label="Scrie sau spune ce vrei să adaugi" autocomplete="off" enterkeyhint="go"><button id="qgo" class="btn" type="button">Înțelege</button></div><div id="qr" role="status" aria-live="polite"></div><p class="sub" style="margin:10px 0 0">Exemple: „am încărcat 30 kWh la Eldrive, 74 lei” · „am cumpărat 10 TLV la 31,5” · „am plătit factura la apă” · „memento indexul la apă pe 20” · „persoană Maria, născută 14.03.1990” · „eveniment vizită doctor 12.12.2026”</p><div class="sub" style="margin:14px 0 0">Sau deschide aplicația:</div><a class="opt" href="#masina">Încărcare nouă <em>Mașină</em></a><a class="opt" href="#facturi">Factură nouă <em>Facturi</em></a><a class="opt" href="#crm">Persoană nouă <em>Mini-CRM</em></a><a class="opt" href="#bursa">Tranzacție nouă <em>Bursa</em></a><p class="sub">Te duce în aplicația respectivă, la butonul ei de adăugare.</p></dialog>
-<dialog id="set"><h2>Aspect</h2><div class="sub" style="margin:0 0 8px">Temă</div><div class="th" id="th"></div><div class="sub" style="margin:0 0 8px">Culoare accent</div><div class="sw" id="sw"></div><div class="sub" style="margin:0">Transparență carduri <b id="cav"></b></div><input type="range" id="ca" min="0" max="100" aria-label="Transparență carduri"><input type="file" id="tf" accept="image/*" hidden><div class="sub" style="margin:0">Buget lunar (RON)</div><input type="number" id="bud" inputmode="numeric" placeholder="ex. 2000" aria-label="Buget lunar în RON" style="width:100%;margin:6px 0 16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px"><div class="sub" style="margin:0">Conectare Facturi (sincronizare)</div><p class="sub" id="cst" style="margin:4px 0 8px"></p><div class="qa"><input id="cin" type="text" placeholder="lipește codul de sincronizare" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Cod Facturi"><button id="csv" class="btn" type="button">Conectează</button></div><div style="display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap"><button class="b2" id="clk" type="button">Copiază linkul de conectare</button><button class="b2" id="cdc" type="button">Deconectează</button></div><div class="sub" style="margin:0">Legături între aplicații</div><div class="cr"><label><input type="checkbox" id="fl">Facturile scadente → memento în Mini-CRM</label></div><p class="sub" style="margin:4px 0 16px">Adaugă în Mini-CRM un eveniment pentru fiecare factură de plătit care scade în următoarele 7 zile.</p><div class="sub" style="margin:0">Securitate</div><div class="cr"><label><input type="checkbox" id="fid">Blocare cu Face ID</label></div><p class="sub" id="fidn" style="margin:4px 0 16px">Cere Face ID la deschidere și după 1 minut în fundal. Protejează doar acest hub, pe acest telefon.</p><div class="sub" style="margin:0">Carduri · arată, ascunde, mută</div><div id="cl"></div></dialog>
+<dialog id="set"><h2>Aspect</h2><div class="sub" style="margin:0 0 8px">Temă</div><div class="th" id="th"></div><div class="sub" style="margin:0 0 8px">Culoare accent</div><div class="sw" id="sw"></div><div class="sub" style="margin:0">Transparență carduri <b id="cav"></b></div><input type="range" id="ca" min="0" max="100" aria-label="Transparență carduri"><input type="file" id="tf" accept="image/*" hidden><div class="sub" style="margin:0">Calendar</div><div class="chips" id="cvs" style="margin:6px 0 16px"></div><div class="sub" style="margin:0">Buget lunar (RON)</div><input type="number" id="bud" inputmode="numeric" placeholder="ex. 2000" aria-label="Buget lunar în RON" style="width:100%;margin:6px 0 16px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:16px"><div class="sub" style="margin:0">Conectare Facturi (sincronizare)</div><p class="sub" id="cst" style="margin:4px 0 8px"></p><div class="qa"><input id="cin" type="text" placeholder="lipește codul de sincronizare" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Cod Facturi"><button id="csv" class="btn" type="button">Conectează</button></div><div style="display:flex;gap:8px;margin:10px 0 16px;flex-wrap:wrap"><button class="b2" id="clk" type="button">Copiază linkul de conectare</button><button class="b2" id="cdc" type="button">Deconectează</button></div><div class="sub" style="margin:0">Legături între aplicații</div><div class="cr"><label><input type="checkbox" id="fl">Facturile scadente → memento în Mini-CRM</label></div><p class="sub" style="margin:4px 0 16px">Adaugă în Mini-CRM un eveniment pentru fiecare factură de plătit care scade în următoarele 7 zile.</p><div class="sub" style="margin:0">Securitate</div><div class="cr"><label><input type="checkbox" id="fid">Blocare cu Face ID</label></div><p class="sub" id="fidn" style="margin:4px 0 16px">Cere Face ID la deschidere și după 1 minut în fundal. Protejează doar acest hub, pe acest telefon.</p><div class="sub" style="margin:0">Carduri · arată, ascunde, mută</div><div id="cl"></div></dialog>
 
 <div id="intro" aria-live="polite"><small>PORTOFOLIU · BURSA</small><div class="xf" id="fi" role="img"></div><span class="xl">RON</span><p id="ip"></p><span class="hint">Atinge ca să continui</span></div>
+<dialog id="svc"><h2>Intervenție nouă</h2><div class="chips" id="svct"></div><div class="fld"><label for="sd">Data</label><input id="sd" type="date"></div><div class="fld"><label for="sk">Kilometraj</label><input id="sk" type="number" inputmode="numeric"></div><div class="fld"><label for="sc">Cost (RON)</label><input id="sc" type="number" inputmode="decimal"></div><div class="fld"><label for="snd">Următoarea scadență (data)</label><input id="snd" type="date"></div><div class="fld"><label for="snk">sau la kilometraj</label><input id="snk" type="number" inputmode="numeric"></div><div class="fld"><label for="sn">Notițe</label><input id="sn" type="text"></div><button class="btn" id="svsv" type="button" style="width:100%;margin-top:14px">Salvează</button><p id="svm" class="sub" role="status"></p></dialog>
 <div id="lock" role="dialog" aria-modal="true" aria-label="Hub blocat"><svg width="84" height="84" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M9 10v1.5M15 10v1.5M12 10v3.500h-1M9 16c1.5 1.4 4.5 1.4 6 0"/></svg><h2>Hub blocat</h2><p>Banii și datele tale rămân ascunse până te recunoaște.</p><button class="btn" id="unlock" type="button">Deblochează cu Face ID</button><p id="lerr" role="status"></p></div>
 <script>
 /* 1) Adresele aplicațiilor — schimbă-le dacă sunt altele */
 var APPS={bursa:{n:"Bursa",u:"https://serbaniulian-cmd.github.io/bursa/"},facturi:{n:"Facturi",u:"https://serbaniulian-cmd.github.io/Facturi_2027/"},masina:{n:"Mașină",u:"https://serbaniulian-cmd.github.io/masina/"},crm:{n:"Mini-CRM",u:"https://serbaniulian-cmd.github.io/Mini_CRM/"}};
 /* 2) Date reale: se citesc din telefon (aceeași adresă ca aplicațiile) și din Firebase */
 var $=function(i){return document.getElementById(i)},fm=function(n){return Math.round(n).toLocaleString("ro-RO")},pc=function(n){return (n>0?"+":n<0?"−":"")+Math.abs(n).toLocaleString("ro-RO",{minimumFractionDigits:1,maximumFractionDigits:1})+"%"};
-var FBm,FBb,FBf,DATA={badges:{}},CL={},now=new Date(),hr=now.getHours(),dt="",subTail="",BUD=0,CRM_DB="https://minicrm-b3a88-default-rtdb.europe-west1.firebasedatabase.app";
+var FBm,FBb,FBf,SYT={},ERR={},DATA={badges:{}},CL={},now=new Date(),hr=now.getHours(),dt="",subTail="",BUD=0,CRM_DB="https://minicrm-b3a88-default-rtdb.europe-west1.firebasedatabase.app";
 try{BUD=+localStorage.getItem("hubBudget")||0}catch(e){}
 function ls(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
 function arr(x){return Array.isArray(x)?x:x&&typeof x==="object"?Object.keys(x).map(function(k){return x[k]}):[]}
@@ -172,6 +180,7 @@ function compute(){
  arr(D.people).forEach(function(p){var b=dd(p.bd);if(!b)return;var n=new Date(td.getFullYear(),b.getMonth(),b.getDate());if(n<td)n.setFullYear(td.getFullYear()+1);R.bd.push({name:p.name,days:dto(n)});R.got=true});
  arr(D.rem).forEach(function(r){arr(r.days).forEach(function(d){if(d<=td.getDate()&&arr((r.done||{})[mk]).indexOf(d)<0)R.rem.push({text:r.text})});R.got=true});
  arr(D.ann).forEach(function(a){var d=dd(a.date);if(d){R.ann.push({text:a.text,days:dto(d),date:a.date});R.got=true}});
+ var sv=arr((CL.service||{}).items).concat(arr(ls("hubService"))),seen={};R.svc=sv.filter(function(x){if(!x||!x.id||seen[x.id])return false;seen[x.id]=1;return true}).sort(function(a,b){return a.d<b.d?-1:1});R.km=0;R.ch.forEach(function(c){if(+c.o>R.km)R.km=+c.o});R.svc.forEach(function(x){if(+x.km>R.km)R.km=+x.km});
  R.people=arr(D.people);R.remAll=arr(D.rem);R.S=S;
  return R}
 function spk(a,bars){if(!a.some(function(v){return v>0}))return"";var m=Math.max.apply(null,a)||1,n=Math.min.apply(null,a),w=100/a.length;
@@ -185,6 +194,8 @@ function parseAdd(x){var t=nz(x),R=LAST||{bills:[],st:[]},nm=function(v){return 
  if((m=t.match(/(\d+[.,]?\d*)\s*kwh/))){var kw=nm(m[1]),pm=t.replace(m[0],"").match(/(\d+[.,]?\d*)\s*(lei|ron)/);if(!pm)return{e:"Câți lei ai plătit? Ex.: „am încărcat 30 kWh la Eldrive, 74 lei”."};
   var st=arr(R.st).filter(function(s){return t.indexOf(nz(s.n).split(" ")[0])>-1})[0];if(!st)return{e:"Nu știu la ce stație. Spune-i numele, ex.: "+arr(R.st).slice(0,2).map(function(s){return s.n}).join(" sau ")+"."};
   return{k:"masina",l:"Încărcare · "+nf(kw)+" kWh · "+st.n+" · "+nf(nm(pm[1]))+" RON · "+ds,o:{d:ds,k:kw,p:nm(pm[1]),s:st.n}}}
+ if((m=t.match(/(?:am facut|am schimbat|am dus|am platit)\s+(?:la\s+)?(itp|rca|ulei|anvelope|frane|revizie)\b/))){var TY={itp:"ITP",rca:"RCA",ulei:"Ulei",anvelope:"Anvelope",frane:"Frâne",revizie:"Altele"},cs=t.match(/(\d+[.,]?\d*)\s*(lei|ron)/),km=t.match(/(\d[\d.]*)\s*km/);
+  return{k:"svc",l:"Carnet · "+TY[m[1]]+(cs?" · "+nf(nm(cs[1]))+" RON":"")+(km?" · "+km[1]+" km":"")+" · "+ds,o:{id:uid(),t:TY[m[1]],d:ds,km:km?parseInt(km[1].replace(/\./g,"")):0,cost:cs?nm(cs[1]):0,note:"",nd:"",nk:0}}}
  if((m=t.match(/(cumpar\w*|vand\w*)\s+(\d+[.,]?\d*)\s+([a-z0-9]{2,12})\s+(?:la|cu|pe)\s+(\d+[.,]?\d*)/))){var b=/^cump/.test(m[1]),cm=t.match(/comision\s+(\d+[.,]?\d*)/),sy=m[3].toUpperCase();
   return{k:"bursa",l:(b?"Cumpărat ":"Vândut ")+nf(nm(m[2]))+" × "+sy+" la "+nf(nm(m[4]))+" RON · "+ds,o:{id:Date.now().toString(36),d:ds,s:sy,t:b?"B":"V",q:nm(m[2]),p:nm(m[4]),f:cm?nm(cm[1]):0}}}
  var DM=function(q){var a=q.match(/(\d{1,2})[.\/](\d{1,2})[.\/](\d{4})/);if(a)return a[3]+"-"+pad(+a[2])+"-"+pad(+a[1]);var Z=["ianuarie","februarie","martie","aprilie","mai","iunie","iulie","august","septembrie","octombrie","noiembrie","decembrie"];a=q.match(/(\d{1,2})\s+([a-z]+)\s+(\d{4})/);if(a&&Z.indexOf(a[2])>-1)return a[3]+"-"+pad(Z.indexOf(a[2])+1)+"-"+pad(+a[1]);return null},cut=function(mm,g){return x.substr(mm.index+mm[0].indexOf(mm[g]),mm[g].length).trim()};
@@ -202,6 +213,7 @@ async function saveAdd(){var a=PENDING,r=$("qr");if(!a)return;
  try{var fv=window.firebase&&firebase.firestore?firebase.firestore.FieldValue:null;
   if(a.k==="masina")await FBm.firestore().collection("app").doc("masina").update({charges:fv.arrayUnion(a.o)});
   else if(a.k==="crm")await crmAppend(a.sub,[a.o]);
+  else if(a.k==="svc"){if(!(await svcSave(a.o)))a.l+=" (doar pe acest dispozitiv, cloud-ul nu a răspuns)"}
   else if(a.k==="bursa")await FBb.firestore().collection("bursa").doc("date").update({tr:fv.arrayUnion(a.o)});
   else{var u={};u[a.o]=true;await FBf.firestore().collection("facturi2027").doc(localStorage.getItem("sincronizare_cod_2027")).update(u)}
   PENDING=null;r.innerHTML='<div class="opt">Salvat ✓ '+a.l+'</div>';$("qa").value="";setTimeout(function(){$("add").close()},900)}
@@ -232,8 +244,59 @@ function evs(R,y,m){var E={},ym=y+"-"+pad(m+1),add=function(k,a,t){(E[k]=E[k]||[
  R.remAll.forEach(function(r){arr(r.days).forEach(function(d){if(d>=1&&d<=dim)add(dk(d),"crm","Memento: "+r.text)})});
  R.ann.forEach(function(a){if(String(a.date).slice(0,7)===ym)add(a.date,"crm",a.text)});
  arr(R.S&&R.S.tr).forEach(function(x){if(String(x.d).slice(0,7)===ym)add(x.d,"bursa",(x.t==="B"?"Cumpărat ":"Vândut ")+x.s)});
+ R.svc.forEach(function(x){if(String(x.nd||"").slice(0,7)===ym)add(x.nd,"masina","Scadență: "+x.t);if(String(x.d).slice(0,7)===ym)add(x.d,"masina","Service: "+x.t+(+x.cost?" · "+fm(+x.cost)+" RON":""))});
  return E}
-function renderCal(){var R=LAST;if(!R)return;var t=new Date(now.getFullYear(),now.getMonth()+CAL,1),y=t.getFullYear(),m=t.getMonth(),ym=y+"-"+pad(m+1),E=evs(R,y,m),first=(t.getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),tds=now.getFullYear()+"-"+pad(now.getMonth()+1)+"-"+pad(now.getDate()),h="";
+function dd2(s){var p=String(s||"").split("-").map(Number);return p.length===3&&p[0]?new Date(p[0],p[1]-1,p[2]):null}
+function upc(R,days){var out=[],t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ for(var i=0;i<=2;i++){var t=new Date(t0.getFullYear(),t0.getMonth()+i,1),E=evs(R,t.getFullYear(),t.getMonth());Object.keys(E).forEach(function(k){var d=dd2(k);if(!d)return;var df=Math.round((d-t0)/864e5);if(df>=0&&df<=days)E[k].forEach(function(e){out.push({k:k,df:df,e:e})})})}
+ return out.sort(function(a,b){return a.df-b.df})}
+var whenL=function(df){return df===0?"azi":df===1?"mâine":"în "+df+" zile"};
+function crow(x){return '<div class="r2"><span><i class="pd" style="background:'+CA[x.e.a]+'"></i>'+x.e.t+'</span><em>'+whenL(x.df)+'</em></div>'}
+function calView(R){var v=CFG.cv,t0=new Date(now.getFullYear(),now.getMonth(),now.getDate()),u=upc(R,30),h="",none='<div class="r2"><span style="color:var(--mu)">Nimic în următoarele 30 de zile</span></div>';
+ $("calt").textContent="Calendar";
+ if(v==="azi"){var DW=["DUMINICĂ","LUNI","MARȚI","MIERCURI","JOI","VINERI","SÂMBĂTĂ"];h='<div class="cz"><div class="cdate"><small>'+DW[t0.getDay()]+'</small><b>'+t0.getDate()+'</b></div><div class="clist">'+(u.slice(0,5).map(crow).join("")||none)+'</div></div>'}
+ else if(v==="sapt"){var wk=new Date(t0);wk.setDate(t0.getDate()-((t0.getDay()+6)%7));var cache={},cells="";
+  for(var i=0;i<7;i++){var d=new Date(wk);d.setDate(wk.getDate()+i);var mk2=d.getFullYear()+"-"+d.getMonth();if(!cache[mk2])cache[mk2]=evs(R,d.getFullYear(),d.getMonth());var k=d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()),ev=cache[mk2][k]||[],ap=[];ev.forEach(function(e){if(ap.indexOf(e.a)<0)ap.push(e.a)});
+   cells+='<div class="wc'+(d.getTime()===t0.getTime()?" t":"")+'"><small>'+["Lu","Ma","Mi","Jo","Vi","Sâ","Du"][i]+'</small><b>'+d.getDate()+'</b><span class="dt" style="justify-content:center">'+ap.slice(0,4).map(function(a){return '<i style="background:'+CA[a]+'"></i>'}).join("")+'</span></div>'}
+  var left=6-((t0.getDay()+6)%7);h='<div class="wk">'+cells+'</div><div style="margin-top:8px">'+(u.filter(function(x){return x.df<=left}).map(crow).join("")||'<div class="r2"><span style="color:var(--mu)">Nimic pentru restul săptămânii</span></div>')+'</div>'}
+ else{var G=[["AZI",function(x){return x.df===0}],["MÂINE",function(x){return x.df===1}],["SĂPTĂMÂNA ASTA",function(x){return x.df>1&&x.df<=7}],["MAI TÂRZIU",function(x){return x.df>7}]];
+  G.forEach(function(g){var L=u.filter(g[1]);if(L.length)h+='<div class="g2">'+g[0]+'</div>'+L.map(crow).join("")});if(!h)h=none}
+ $("cald").innerHTML=h}
+function svcDue(R){var last={},td=new Date(now.getFullYear(),now.getMonth(),now.getDate()),o=[];R.svc.forEach(function(x){last[x.t]=x});
+ Object.keys(last).forEach(function(k){var x=last[k],nd=dd2(x.nd);if(nd){var dl=Math.round((nd-td)/864e5);if(dl<=60)o.push({t:k,dl:dl,lab:dl<0?"întârziat "+pl(-dl,"zi","zile"):dl===0?"azi":"în "+pl(dl,"zi","zile")})}else if(+x.nk>0&&R.km){var rm=x.nk-R.km;if(rm<=1500)o.push({t:k,dl:rm<=0?-1:Math.round(rm/60),lab:rm<=0?"depășit cu "+fm(-rm)+" km":fm(rm)+" km rămași"})}});
+ return o.sort(function(a,b){return a.dl-b.dl})}
+function renderCar(){var R=LAST;if(!R)return;var td=new Date(now.getFullYear(),now.getMonth(),now.getDate()),last={};R.svc.forEach(function(x){last[x.t]=x});
+ var rows=Object.keys(last).map(function(k){var x=last[k],nd=dd2(x.nd),pr=0,lab="fără scadență",c="var(--lime)",o=9e9;
+  if(nd){var tot=Math.max(1,(nd-dd2(x.d))/864e5),dl=Math.round((nd-td)/864e5);pr=Math.min(1,Math.max(0,1-dl/tot));lab=dl<0?"întârziat "+pl(-dl,"zi","zile"):dl===0?"azi":"în "+pl(dl,"zi","zile");o=dl;if(dl<=14)c="#ffd166";if(dl<0)c="#ff8a8a"}
+  else if(+x.nk>0&&R.km){var rm=x.nk-R.km,tk=Math.max(1,x.nk-(+x.km||0));pr=Math.min(1,Math.max(0,1-rm/tk));lab=rm<=0?"depășit cu "+fm(-rm)+" km":fm(rm)+" km rămași";o=rm/60;if(rm<=500)c="#ffd166";if(rm<=0)c="#ff8a8a"}
+  return{t:k,lab:lab,pr:pr,c:c,o:o}}).sort(function(a,b){return a.o-b.o});
+ var yr=String(now.getFullYear()),cost=R.svc.filter(function(x){return String(x.d).slice(0,4)===yr}).reduce(function(s,x){return s+(+x.cost||0)},0),hist=R.svc.slice(-3).reverse();
+ $("c-car").innerHTML='<div class="hd"><div><h2>Carnetul mașinii</h2><p>ITP, RCA, ulei, anvelope și alte intervenții</p></div><button class="btn" id="svcnew" type="button" style="margin:0;padding:10px 16px">+ Intervenție</button></div>'+
+  '<div class="two" style="margin-top:12px"><div><h3>Kilometraj</h3><b class="sn" style="font-size:22px">'+(R.km?fm(R.km)+" km":"—")+'</b></div><div><h3>Costuri '+yr+'</h3><b class="sn" style="font-size:22px">'+fm(cost)+' RON</b></div></div>'+
+  (rows.length?rows.map(function(r){return '<div class="ob" style="flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between"><b>'+r.t+'</b><span style="color:'+r.c+';font-weight:700;font-size:13px;margin:0">'+r.lab+'</span></div><div class="sbar"><i style="width:'+Math.round(r.pr*100)+'%;background:'+r.c+'"></i></div></div>'}).join(""):'<p style="margin-top:12px">Nicio intervenție încă. Adaugă prima (ITP, RCA, ulei...) și apar scadențele.</p>')+
+  (hist.length?'<div class="g2">ISTORIC</div>'+hist.map(function(x){return '<div class="r2"><span>'+String(x.d).slice(8)+"."+String(x.d).slice(5,7)+" · "+x.t+(+x.km?" · "+fm(+x.km)+" km":"")+'</span><em class="sn">'+(+x.cost?fm(+x.cost)+" RON":"—")+'</em></div>'}).join(""):"")}
+var SVT="ITP",SVTS=["ITP","RCA","Ulei","Anvelope","Frâne","Altele"];
+function svChips(){$("svct").innerHTML=SVTS.map(function(t){return '<button type="button" data-t="'+t+'" class="'+(SVT===t?"on":"")+'">'+t+'</button>'}).join("")}
+async function svcSave(o){var ok=false;try{if(window.firebase&&FBm){await FBm.firestore().collection("app").doc("service").set({items:firebase.firestore.FieldValue.arrayUnion(o)},{merge:true});ok=true}}catch(e){}
+ if(!ok){var a=ls("hubService")||[];a.push(o);try{localStorage.setItem("hubService",JSON.stringify(a))}catch(e){}}return ok}
+function ago(t){var q=Math.round((Date.now()-t)/1000);return q<60?"acum "+q+" sec":q<3600?"acum "+Math.round(q/60)+" min":"acum "+Math.round(q/3600)+" h"}
+function renderStare(){var R=LAST;if(!R)return;var ok=0,h="",A=[["bursa","Bursa",pl(R.pos.length,"poziție","poziții")+" · "+pl(arr(R.S&&R.S.tr).length,"tranzacție","tranzacții")],["facturi","Facturi",pl(R.bills.length,"factură","facturi")],["masina","Mașină",pl(R.ch.length,"încărcare","încărcări")+" · "+pl(R.svc.length,"intervenție","intervenții")],["crm","Mini-CRM",pl(R.people.length,"persoană","persoane")+" · "+pl(R.remAll.length,"memento","memento-uri")]];
+ A.forEach(function(a){var k=a[0],t=SYT[k],st,col,sub;
+  if(k==="facturi"&&!CODE){st="neconectat";col="#ffd166";sub="lipește codul în Aspect"}
+  else if(ERR[k]){st="eroare";col="#ff8a8a";sub="nu pot citi din cloud; folosesc datele din telefon"}
+  else if(t){st="sincronizat ✓";col="var(--lime)";sub="ultima actualizare "+ago(t);ok++}
+  else{st="doar local";col="#ffd166";sub="încă aștept răspunsul din cloud"}
+  h+='<div class="ob" style="align-items:center"><i style="background:'+col+';box-shadow:0 0 10px '+col+'"></i><div style="flex:1"><b>'+a[1]+'</b><span>'+a[2]+' · '+sub+'</span></div><em style="font-style:normal;font-size:12px;font-weight:700;color:'+col+'">'+st+'</em></div>'});
+ $("c-stare").innerHTML='<div class="hd"><div><h2>'+(ok===4?"Totul e sincronizat":ok+" din 4 sincronizate")+'</h2><p>Starea fiecărei aplicații față de cloud</p></div><button class="b2" id="strf" type="button">Reîmprospătează</button></div><div style="margin-top:6px">'+h+'</div>'}
+$("c-stare").addEventListener("click",function(e){if(e.target.id==="strf"){crmPull();Object.keys(ERR).forEach(function(k){ERR[k]=0});sched()}});
+setInterval(function(){if(LAST)renderStare()},30000);
+$("c-car").addEventListener("click",function(e){if(e.target.id==="svcnew"){var t=new Date();$("sd").value=t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());["sk","sc","snd","snk","sn"].forEach(function(i){$(i).value=""});$("svm").textContent="";SVT="ITP";svChips();$("svc").showModal()}});
+$("svct").addEventListener("click",function(e){var b=e.target.closest("button");if(b){SVT=b.dataset.t;svChips()}});
+$("svc").addEventListener("click",function(e){if(e.target===$("svc"))$("svc").close()});
+$("svsv").addEventListener("click",async function(){var d=$("sd").value;if(!d){$("svm").textContent="Alege data.";return}
+ var o={id:uid(),t:SVT,d:d,km:+$("sk").value||0,cost:+$("sc").value||0,note:$("sn").value.trim(),nd:$("snd").value||"",nk:+$("snk").value||0},ok=await svcSave(o);
+ $("svm").textContent=ok?"Salvat ✓":"Salvat doar pe acest dispozitiv (cloud-ul nu a răspuns).";sched();setTimeout(function(){$("svc").close()},ok?600:1800)});
+function renderCal(){var R=LAST;if(!R)return;var lun=!CFG.cv||CFG.cv==="luna";$("calp").style.visibility=$("caln").style.visibility=lun?"visible":"hidden";$("calg").style.display=lun?"":"none";if(!lun)return calView(R);var t=new Date(now.getFullYear(),now.getMonth()+CAL,1),y=t.getFullYear(),m=t.getMonth(),ym=y+"-"+pad(m+1),E=evs(R,y,m),first=(t.getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),tds=now.getFullYear()+"-"+pad(now.getMonth()+1)+"-"+pad(now.getDate()),h="";
  ["Lu","Ma","Mi","Jo","Vi","Sâ","Du"].forEach(function(x){h+='<div class="ch">'+x+'</div>'});
  for(var i=0;i<first;i++)h+="<div></div>";
  for(var d=1;d<=dim;d++){var k=ym+"-"+pad(d),ev=E[k]||[],ap=[];ev.forEach(function(e){if(ap.indexOf(e.a)<0)ap.push(e.a)});
@@ -267,6 +330,7 @@ function build(){
  var c=[];if(nx)c.push({d:nx.days,t:"Plătește factura la "+nx.name,s:(nx.days<0?"Întârziată cu "+pl(-nx.days,"zi","zile"):nx.days===0?"Scadentă azi":"Scadentă în "+pl(nx.days,"zi","zile"))+" · "+fm(nx.a)+" RON",a:"facturi"});
  if(R.rem.length)c.push({d:0,t:R.rem[0].text,s:"Memento din Mini-CRM",a:"crm"});
  if(bd7[0])c.push({d:bd7[0].days,t:"Zi de naștere: "+bd7[0].name,s:bd7[0].days===0?"azi":"în "+pl(bd7[0].days,"zi","zile"),a:"crm"});
+ var sdue=svcDue(R);sdue.forEach(function(x){if(x.dl<=14)c.push({d:x.dl,t:x.t+(x.dl<0?" — întârziat":" — scadent"),s:"Carnetul mașinii · "+x.lab,a:"masina"})});
  c.sort(function(a,b){return a.d-b.d});var N=c[0]||{t:R.got?"Nimic urgent":"Nu am găsit încă date",s:R.got?"Totul e la zi":"Deschide fiecare aplicație o dată din bara de sus",a:"hub"};
  $("c-next").innerHTML='<small>URMĂTOAREA MIȘCARE</small><h2>'+N.t+'</h2><p>'+N.s+'</p><a class="btn" href="#'+N.a+'">Deschide</a>';
  /* kpi */
@@ -294,6 +358,7 @@ function build(){
  due7.forEach(function(b){az.push([b.name,b.days<0?"întârziată":b.days===0?"azi":"în "+pl(b.days,"zi","zile")])});
  bd7.forEach(function(b){az.push(["Zi de naștere: "+b.name,b.days===0?"azi":"în "+pl(b.days,"zi","zile")])});
  an7.forEach(function(a){az.push([a.text,a.days===0?"azi":"în "+pl(a.days,"zi","zile")])});
+ sdue.filter(function(x){return x.dl<=14}).forEach(function(x){az.push(["Mașină: "+x.t,x.lab])});
  $("azi").innerHTML=(az.length?az:[["Nimic de făcut azi",""]]).map(function(r){return '<label class="row"><input type="checkbox" aria-label="'+r[0]+'"><span>'+r[0]+'</span>'+(r[1]?'<em>'+(r[2]?'<a href="#'+r[2]+'" style="color:inherit;text-decoration:none">Deschide Facturi ›</a>':r[1])+'</em>':"")+'</label>'}).join("");
  /* observatii automate */
  var ob=[],by={};
@@ -312,7 +377,7 @@ function build(){
  if(bd7[0])ob.push({w:2,c:"#7dd3fc",t:"Ziua de naștere a lui "+bd7[0].name+" e "+(bd7[0].days===0?"azi":"în "+pl(bd7[0].days,"zi","zile")),s:"Mini-CRM"});
  ob.sort(function(a,b){return a.w-b.w});
  $("c-obs").innerHTML='<h2>Observații</h2><p>Calculate singure din datele tale</p><div style="margin-top:6px">'+(ob.length?ob.slice(0,5).map(function(x){return '<div class="ob"><i style="background:'+x.c+'"></i><div><b>'+x.t+'</b><span>'+x.s+'</span></div></div>'}).join(""):'<div class="ob"><div><b style="font-weight:500;color:var(--mu)">Încă nu am destule date ca să observ ceva. Pe măsură ce adaugi, apar aici.</b></div></div>')+'</div>';
- LAST=R;renderCal();renderWrap();
+ LAST=R;renderCal();renderWrap();renderCar();renderStare();
  /* legatura: facturi scadente -> evenimente in Mini-CRM (doar daca e bifat) */
  if(CFG.fl&&!SYNC){var Dc=CL.crm||ls("crm")||{},ex=arr(Dc.ann).map(function(a){return a.date+"|"+a.text}),todo=R.bills.filter(function(b){return !b.paid&&b.ds&&b.days!=null&&b.days>=0&&b.days<=7}).map(function(b){return{date:b.ds,text:"Scadență: "+b.name+" · "+fm(b.a)+" RON"}}).filter(function(o){var k=o.date+"|"+o.text;return ex.indexOf(k)<0&&SYN.indexOf(k)<0});
   if(todo.length){SYNC=true;todo.forEach(function(o){SYN.push(o.date+"|"+o.text)});try{localStorage.setItem("hubSyn",JSON.stringify(SYN.slice(-200)))}catch(e){}
@@ -337,16 +402,16 @@ $("q").addEventListener("input",function(){var q=nz(this.value.trim()),r=$("res"
 $("res").addEventListener("click",function(){$("res").hidden=true;$("q").value=""});
 
 /* Firebase: aduce datele proaspete (dacă regulile bazei permit); altfel rămân cele din telefon */
-function crmPull(){fetch(CRM_DB+"/crm.json").then(function(r){return r.json()}).then(function(j){if(j&&(j.people||j.rem||j.ann)){CL.crm=j;sched()}}).catch(function(){})}
+function crmPull(){fetch(CRM_DB+"/crm.json").then(function(r){return r.json()}).then(function(j){if(j&&(j.people||j.rem||j.ann)){CL.crm=j;SYT.crm=Date.now();ERR.crm=0;sched()}}).catch(function(){ERR.crm=1;sched()})}
 function cloud(){
  if(window.firebase){try{
-  var a=firebase.initializeApp({apiKey:"AIzaSyAjeAsbobu56M2O7BIjLEut9hvLygmOftc",projectId:"masina-dd006"},"hm");FBm=a;
-  a.firestore().collection("app").doc("masina").onSnapshot(function(s){if(s.exists){CL.masina=s.data();sched()}},function(){});
+  var a=firebase.initializeApp({apiKey:"AIzaSyAjeAsbobu56M2O7BIjLEut9hvLygmOftc",projectId:"masina-dd006"},"hm");FBm=a;a.firestore().collection("app").doc("service").onSnapshot(function(s){if(s.exists)CL.service=s.data();sched()},function(){ERR.service=1});
+  a.firestore().collection("app").doc("masina").onSnapshot(function(s){if(s.exists){CL.masina=s.data();SYT.masina=Date.now();ERR.masina=0;sched()}},function(){ERR.masina=1;sched()});
   var b=firebase.initializeApp({apiKey:"AIzaSyBhcqKI-BuANUFoGnG15qCG6PmUIbbmido",projectId:"bursa2027-5f1ad"},"hb");FBb=b;
-  b.firestore().collection("bursa").doc("date").onSnapshot(function(s){if(s.exists){CL.bursa=s.data();sched()}},function(){});
+  b.firestore().collection("bursa").doc("date").onSnapshot(function(s){if(s.exists){CL.bursa=s.data();SYT.bursa=Date.now();ERR.bursa=0;sched()}},function(){ERR.bursa=1;sched()});
   var cod=null;try{cod=localStorage.getItem("sincronizare_cod_2027")}catch(e){}
   if(cod){var f=firebase.initializeApp({apiKey:"AIzaSyDMkckktsFv0I-plIeWdTkLppPB9Y7xbjE",projectId:"facturi2027"},"hf");FBf=f;
-   f.firestore().collection("facturi2027").doc(cod).onSnapshot(function(s){if(s.exists){CL.fact=s.data();sched()}},function(){})}
+   f.firestore().collection("facturi2027").doc(cod).onSnapshot(function(s){if(s.exists){CL.fact=s.data();SYT.facturi=Date.now();ERR.facturi=0;sched()}},function(){ERR.facturi=1;sched()})}
  }catch(e){}}
  crmPull()}
 addEventListener("load",function(){restoreCode().then(cloud)});addEventListener("storage",sched);
@@ -376,10 +441,10 @@ var TH=[["lime","Lime noapte","radial-gradient(70% 38% at 100% 100%,rgba(130,78,
  ["cafea","Cafea","linear-gradient(170deg,#2a1c14,#3b261a 55%,#1b110b)","44,28,20","30,20,14",.72,"#f5c26b"],
  ["gheata","Gheață","linear-gradient(170deg,#0f2338,#1d4568 50%,#0a1a2c)","14,34,56","10,26,44",.66,"#7dd3fc"],
  ["grafit","Grafit","linear-gradient(170deg,#1c1e23,#0e0f12)","30,32,37","16,17,20",.8,"#f1f5f9"]],
- CARDS=[["c-next","Următoarea mișcare"],["c-obs","Observații"],["c-kpi","Rezumat"],["c-flip","Afișaj cifre"],["c-cal","Calendar"],["c-chart","Cheltuieli lunare"],["c-pos","Poziții la bursă"],["c-top","Bursa azi"],["c-azi","Azi"],["c-wrap","Rezumat lunar"]],
+ CARDS=[["c-next","Următoarea mișcare"],["c-obs","Observații"],["c-kpi","Rezumat"],["c-flip","Afișaj cifre"],["c-cal","Calendar"],["c-chart","Cheltuieli lunare"],["c-pos","Poziții la bursă"],["c-top","Bursa azi"],["c-azi","Azi"],["c-car","Carnetul mașinii"],["c-stare","Stare sincronizare"],["c-wrap","Rezumat lunar"]],
  ACC=[["#c6f432","Lime"],["#f472b6","Roz"],["#60a5fa","Albastru"],["#fb923c","Portocaliu"],["#2dd4bf","Turcoaz"]],
- CFG={th:"lime",acc:"#c6f432",ca:null,fl:false,order:CARDS.map(function(c){return c[0]}),hide:[]},IMG="";
-try{IMG=localStorage.getItem("hubBgImg")||"";var sv=JSON.parse(localStorage.getItem("hubCfg")||"{}");if(sv.th)CFG.th=sv.th;if(sv.acc)CFG.acc=sv.acc;if(sv.ca!=null)CFG.ca=sv.ca;if(sv.fl)CFG.fl=true;if(sv.order){var ids=CARDS.map(function(c){return c[0]}),so=sv.order.filter(function(x){return ids.indexOf(x)>-1});ids.forEach(function(x){if(so.indexOf(x)<0)so.push(x)});CFG.order=so}if(sv.hide)CFG.hide=sv.hide}catch(e){}
+ CFG={th:"lime",acc:"#c6f432",ca:null,fl:false,cv:"luna",order:CARDS.map(function(c){return c[0]}),hide:[]},IMG="";
+try{IMG=localStorage.getItem("hubBgImg")||"";var sv=JSON.parse(localStorage.getItem("hubCfg")||"{}");if(sv.th)CFG.th=sv.th;if(sv.acc)CFG.acc=sv.acc;if(sv.ca!=null)CFG.ca=sv.ca;if(sv.fl)CFG.fl=true;if(sv.cv)CFG.cv=sv.cv;if(sv.order){var ids=CARDS.map(function(c){return c[0]}),so=sv.order.filter(function(x){return ids.indexOf(x)>-1});ids.forEach(function(x){if(so.indexOf(x)<0)so.push(x)});CFG.order=so}if(sv.hide)CFG.hide=sv.hide}catch(e){}
 if(CFG.th==="poza"&&!IMG)CFG.th="lime";
 function cur(){if(CFG.th==="poza")return["poza","Poza mea","linear-gradient(rgba(6,12,28,.55),rgba(6,12,28,.55)),url('"+IMG+"') center/cover","16,26,52","10,18,34",.7,"#f472b6"];return TH.filter(function(t){return t[0]===CFG.th})[0]||TH[0]}
 function name(id){return CARDS.filter(function(c){return c[0]===id})[0][1]}
@@ -390,7 +455,7 @@ function apply(){var T=cur(),R=document.documentElement.style;R.setProperty("--c
 function panel(){var T=cur(),a=CFG.ca!=null?CFG.ca:T[5],tp=Math.round((1-a)/.7*100);
  $("th").innerHTML=TH.map(function(t){return '<button type="button" data-t="'+t[0]+'" class="'+(CFG.th===t[0]?"on":"")+'" style="background:'+t[2]+'">'+t[1]+'</button>'}).join("")+'<button type="button" data-t="poza" class="'+(CFG.th==="poza"?"on":"")+'" style="background:'+(IMG?"linear-gradient(rgba(6,12,28,.4),rgba(6,12,28,.4)),url('"+IMG+"') center/cover":"rgba(255,255,255,.08)")+'">📷 Poza mea</button>';
  $("sw").innerHTML=ACC.map(function(c){return '<button type="button" data-c="'+c[0]+'" aria-label="'+c[1]+'" class="'+(CFG.acc===c[0]?"on":"")+'" style="background:'+c[0]+'"></button>'}).join("");
- $("ca").value=tp;$("cav").textContent=tp+"%";$("fid").checked=!!FID;$("fl").checked=!!CFG.fl;$("bud").value=BUD||"";
+ $("ca").value=tp;$("cav").textContent=tp+"%";$("fid").checked=!!FID;$("cvs").innerHTML=[["luna","Lună"],["azi","Azi"],["sapt","Săptămâna"],["agenda","Agendă"]].map(function(x){return '<button type="button" data-cv="'+x[0]+'" class="'+(CFG.cv===x[0]?"on":"")+'">'+x[1]+"</button>"}).join("");$("fl").checked=!!CFG.fl;$("bud").value=BUD||"";
  $("cl").innerHTML=CFG.order.map(function(id,i){return '<div class="cr"><label><input type="checkbox" data-v="'+id+'"'+(CFG.hide.indexOf(id)<0?" checked":"")+'>'+name(id)+'</label><button type="button" data-u="'+i+'" aria-label="Mută în sus">↑</button><button type="button" data-d="'+i+'" aria-label="Mută în jos">↓</button></div>'}).join("")}
 function loadImg(f){if(!f)return;var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var sc=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
  var u=c.toDataURL("image/jpeg",.75);try{localStorage.setItem("hubBgImg",u)}catch(e){u=c.toDataURL("image/jpeg",.45);try{localStorage.setItem("hubBgImg",u)}catch(e2){alert("Poza e prea mare pentru acest dispozitiv.");return}}
@@ -400,6 +465,7 @@ $("set").addEventListener("click",function(e){var t=e.target,o=CFG.order;
  if(t===$("set")){$("set").close();return}
  if(t.dataset.t){if(t.dataset.t==="poza"&&!IMG){$("tf").click();return}CFG.th=t.dataset.t;CFG.ca=null;CFG.acc=cur()[6]}
  if(t.dataset.c)CFG.acc=t.dataset.c;
+ if(t.dataset.cv){CFG.cv=t.dataset.cv;SEL=null;CAL=0;apply();renderCal()}
  if(t.dataset.u!==undefined&&+t.dataset.u>0){var i=+t.dataset.u,x=o[i];o[i]=o[i-1];o[i-1]=x}
  if(t.dataset.d!==undefined&&+t.dataset.d<o.length-1){var j=+t.dataset.d,y=o[j];o[j]=o[j+1];o[j+1]=y}
  if(t.dataset.v){var k=CFG.hide.indexOf(t.dataset.v);if(t.checked&&k>-1)CFG.hide.splice(k,1);if(!t.checked&&k<0)CFG.hide.push(t.dataset.v)}
